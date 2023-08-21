@@ -1,0 +1,22 @@
+<h2>My Posts Table</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let post of posts">
+            <td class="title">{{post.title}}</td>
+            <td class="body">{{post.body}}</td>
+            <td>
+                <a>
+                    <button type="button">View</button>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
