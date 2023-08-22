@@ -1,4 +1,4 @@
-<h2>My Posts Table</h2>
+<h2>Posts Table</h2>
 
 <table>
     <thead>
@@ -12,8 +12,9 @@
         <tr *ngFor="let post of posts">
             <td class="title">{{post.title}}</td>
             <td class="body">{{post.body}}</td>
+
             <td>
-                <a>
+                <a routerLink="/detail/{{post.id}}">
                     <button type="button">View</button>
                 </a>
             </td>
