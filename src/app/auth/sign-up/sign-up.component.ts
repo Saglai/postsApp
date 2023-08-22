@@ -21,7 +21,7 @@ export class SignUpComponent {
 
   submitSignUp() {
     const signUpValues: SignUpModel = this.signUpForm.value as SignUpModel;
-    const operationResult = this.authService.login(signUpValues);
+    const operationResult = this.authService.signUp(signUpValues);
     
     if (operationResult.isSuccess === true) {
       this.router.navigateByUrl('/posts');

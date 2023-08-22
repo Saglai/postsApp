@@ -21,7 +21,7 @@ export class SignInComponent {
 
   submitSignIn() {
     const signInValues: SignInModel = this.signInForm.value as SignInModel;
-    const operationResult = this.authService.login(signInValues);
+    const operationResult = this.authService.signIn(signInValues);
 
     if (operationResult.isSuccess === true) {
       this.router.navigateByUrl('/posts');

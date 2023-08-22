@@ -1,10 +1,9 @@
-<h1>{{title}}</h1>
-<nav>
-    <a routerLink="/posts">
-        Posts Table
-    </a>
-</nav>
-<app-sign-in></app-sign-in>
-<br>
-<app-sign-up></app-sign-up>
-<router-outlet></router-outlet>
+<main>
+    <header class="brand-name">
+      <h1>PostsApp</h1>
+    </header>
+
+    <section class="content">
+        <router-outlet></router-outlet>
+    </section>
+  </main>
