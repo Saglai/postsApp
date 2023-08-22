@@ -1,1 +1,11 @@
-<p>post-detail works!</p>
+<div *ngIf="post">
+    <div class="title">
+        <h2>Title</h2>
+        <p>{{post.title}}</p>
+    </div>
+    <div class="body">
+        <h2>Content</h2>
+        <p>{{post.body}}</p>
+    </div>
+    <button type="button" (click)="goBack()">Back</button>
+</div>
