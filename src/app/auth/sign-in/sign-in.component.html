@@ -1,0 +1,15 @@
+<div class="sign-in-container">
+    <h2 class="container-heading">Sign in</h2>
+    <div class="forms-container">
+        <form [formGroup]="signInForm" (submit)="submitSignIn()">
+            <label for="login">Your login</label>
+            <input id="login" type="text" formControlName="login">
+    
+            <label for="password">Your password</label>
+            <input id="login" type="text" formControlName="password">
+            <button class="submit-button" type="submit">Sign in</button>
+        </form>
+    </div>
+
+    <p>New to PostsApp? <a routerLink="/">Join now</a></p>
+</div>

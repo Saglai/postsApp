@@ -1,0 +1,15 @@
+<div class="sign-up-container">
+    <h2 class="container-heading">Sign up</h2>
+    <div class="forms-container">
+        <form [formGroup]="signUpForm" (submit)="submitSignUp()">
+            <label for="login">Your login</label>
+            <input id="login" type="text" formControlName="login">
+    
+            <label for="password">Your password</label>
+            <input id="login" type="text" formControlName="password">
+            <button class="submit-button" type="submit">Sign up</button>
+        </form>
+    </div>
+
+    <p>Already a member? <a routerLink="/">Sign in</a></p>
+</div>
