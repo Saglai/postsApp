@@ -6,11 +6,18 @@ import { SignInModel, OperationResult, SignUpModel } from './auth.model';
   })
 export class AuthService {
 
-  register(model: SignUpModel) {
-    
+  signUp(signUpData: SignUpModel) {
+    const userPassword = localStorage.getItem(signUpData.login);
+
+    if (userPassword) {
+      return { isSuccess: false, failMessage: 'The user already exists' };
+    }
+
+    localStorage.setItem(signUpData.login, signUpData.password);
+    return { isSuccess: true };
   } 
 
-  login(signInData: SignInModel): OperationResult {
+  signIn(signInData: SignInModel): OperationResult {
     const userPassword = localStorage.getItem(signInData.login);
 
     if (!userPassword) {
