@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup} from '@angular/forms';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { SignInModel } from '../auth.model';
@@ -10,9 +10,18 @@ import { SignInModel } from '../auth.model';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {
+  failMessage? = '';
   signInForm = new FormGroup({
-    login: new FormControl(''),
-    password: new FormControl('')
+    login: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(15)
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(15)
+    ])
   })
 
   constructor(
@@ -25,6 +34,12 @@ export class SignInComponent {
 
     if (operationResult.isSuccess === true) {
       this.router.navigateByUrl('/posts');
+    } else {
+      this.failMessage = operationResult.failMessage;
+      setTimeout(() => {this.failMessage = undefined}, 5000);
     }
   }
+
+  get login() { return this.signInForm.get('login'); }
+  get password() { return this.signInForm.get('password'); }
 }

@@ -10,7 +10,7 @@ export class AuthService {
     const userPassword = localStorage.getItem(signUpData.login);
 
     if (userPassword) {
-      return { isSuccess: false, failMessage: 'The user already exists' };
+      return { isSuccess: false, failMessage: 'This user already exists' };
     }
 
     localStorage.setItem(signUpData.login, signUpData.password);

@@ -2,14 +2,43 @@
     <h2 class="container-heading">Sign up</h2>
     <div class="forms-container">
         <form [formGroup]="signUpForm" (submit)="submitSignUp()">
-            <label for="login">Your login</label>
-            <input id="login" type="text" formControlName="login">
-    
-            <label for="password">Your password</label>
-            <input id="login" type="text" formControlName="password">
-            <button class="submit-button" type="submit">Sign up</button>
+            <label for="sign-up-login">Your login</label>
+            <input id="sign-up-login" type="text" formControlName="login" required>
+            <div *ngIf="failMessage">
+               {{ failMessage }} 
+            </div>
+            <div *ngIf="login?.invalid && (login?.dirty || login?.touched)"
+                class="alert-danger">
+
+                <div *ngIf="login?.errors?.['required']">
+                    Login is required.
+                </div>
+                <div *ngIf="login?.errors?.['minlength']">
+                    Login must be at least 4 characters long.
+                </div>
+                <div *ngIf="login?.errors?.['maxlength']">
+                    Login must not be longer than 15 characters
+                </div>
+            </div>
+
+            <label for="sign-up-password">Your password</label>
+            <input id="sign-up-password" type="password" formControlName="password" required>
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+                class="alert-danger">
+
+                <div *ngIf="password?.errors?.['required']">
+                    Password is required.
+                </div>
+                <div *ngIf="password?.errors?.['minlength']">
+                    Password must be at least 5 characters long.
+                </div>
+                <div *ngIf="password?.errors?.['maxlength']">
+                    Password must not be longer than 15 characters.
+                </div>
+            </div>
+
+            <button class="submit-button" type="submit" [disabled]="!signUpForm.valid">Sign up</button>
         </form>
     </div>
-
     <p>Already a member? <a routerLink="/">Sign in</a></p>
 </div>
