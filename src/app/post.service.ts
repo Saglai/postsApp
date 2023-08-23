@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError} from 'rxjs/operators';
 
 import { Post } from './post';
 
@@ -16,8 +16,6 @@ export class PostService {
   getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(this.postsUrl)
       .pipe(
-        // tap сообщение пользователю
-        tap(_ => console.log('fetched posts')),
         catchError(this.handleError<Post[]>('getPosts', []))
       )
   }
@@ -25,8 +23,6 @@ export class PostService {
   getPost(id: number): Observable<Post> {
     const url =  `${this.postsUrl}/${id}`;
     return this.http.get<Post>(url).pipe(
-      // tap сообщение пользователю
-      tap(_ => console.log('fetched post id={id}')),
       catchError(this.handleError<Post>(`getPost id ${id}`))
     );
   }
@@ -34,8 +30,6 @@ export class PostService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      // Добавить вывод сообщение пользователю
-      console.log(`${operation} failed: ${error.message}`);
       return of(result as T);
     }
   }

@@ -9,6 +9,7 @@ import { PostsTableComponent } from './posts-table/posts-table.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

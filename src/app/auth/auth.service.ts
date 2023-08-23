@@ -13,6 +13,7 @@ export class AuthService {
       return { isSuccess: false, failMessage: 'This user already exists' };
     }
 
+    localStorage.setItem('_isSignedIn', 'true')
     localStorage.setItem(signUpData.login, signUpData.password);
     return { isSuccess: true };
   } 
@@ -28,6 +29,12 @@ export class AuthService {
       return { isSuccess: false, failMessage: 'Incorrect the password' };
     }
 
+    localStorage.setItem('_isSignedIn', 'true');
     return { isSuccess: true };
+  }
+
+  
+  public get isSignedIn() : boolean {
+    return Boolean(localStorage.getItem('_isSignedIn'));
   }
 }
