@@ -14,7 +14,7 @@ export class SignInComponent {
   signInForm = new FormGroup({
     login: new FormControl('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(2),
       Validators.maxLength(15)
     ]),
     password: new FormControl('', [
