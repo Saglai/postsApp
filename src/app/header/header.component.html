@@ -1,0 +1,22 @@
+<header>
+    <div class="app-name">
+        <h1>postsApp</h1>
+    </div>
+
+    <div class="buttons-container">
+        <div *ngIf="isSignedOut">
+            <a routerLink="/sign-up">
+                <button type="button">SIGN UP</button>
+            </a>
+            <a routerLink="/sign-in">
+                <button type="button">LOG IN</button>
+            </a>
+        </div>
+
+        <div *ngIf="!isSignedOut">
+            <a routerLink="/sign-in">
+                <button type="button" (click)="logOut()">LOG OUT</button>
+            </a>
+        </div>
+    </div>
+</header>
