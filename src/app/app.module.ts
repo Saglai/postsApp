@@ -10,6 +10,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { AuthService } from './auth/auth.service';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthService } from './auth/auth.service';
     PostDetailComponent,
     SignInComponent,
     SignUpComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

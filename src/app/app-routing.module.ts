@@ -7,6 +7,11 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { authGuard } from './auth/auth.guard';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'posts',
+    pathMatch: 'full'
+  },
   { 
     path: 'sign-in', 
     component: SignInComponent
@@ -25,7 +30,6 @@ const routes: Routes = [
     canActivate: [authGuard],
     component: PostDetailComponent 
   },
-  
 ];
 
 @NgModule({
