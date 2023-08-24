@@ -16,7 +16,7 @@ export class AuthService {
     const userPassword = localStorage.getItem(signUpData.login);
 
     if (userPassword) {
-      return { isSuccess: false, failMessage: 'This user already exists' };
+      return { isSuccess: false, failMessage: 'Someone already has that login. Try another?' };
     }
 
     localStorage.setItem('_isSignedIn', 'true');
@@ -30,11 +30,11 @@ export class AuthService {
     const userPassword = localStorage.getItem(signInData.login);
 
     if (!userPassword) {
-      return { isSuccess: false, failMessage: 'Incorrect the login' };
+      return { isSuccess: false, failMessage: 'Login is incorrect' };
     }
 
     if (userPassword !== signInData.password) {
-      return { isSuccess: false, failMessage: 'Incorrect the password' };
+      return { isSuccess: false, failMessage: 'Password is incorrect' };
     }
 
     localStorage.setItem('_isSignedIn', 'true');
@@ -42,7 +42,6 @@ export class AuthService {
     return { isSuccess: true };
   }
 
-  
   get isSignedIn() : boolean {
     return Boolean(localStorage.getItem('_isSignedIn'));
   }
