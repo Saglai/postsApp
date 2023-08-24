@@ -22,7 +22,8 @@ export class PostService {
 
   getPost(id: number): Observable<Post> {
     const url =  `${this.postsUrl}/${id}`;
-    return this.http.get<Post>(url).pipe(
+    return this.http.get<Post>(url)
+    .pipe(
       catchError(this.handleError<Post>(`getPost id ${id}`))
     );
   }
@@ -30,6 +31,7 @@ export class PostService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
+      console.log(`Error was in ${operation} operation`);
       return of(result as T);
     }
   }

@@ -9,11 +9,13 @@ import { Post } from '../post';
 })
 export class PostsTableComponent implements OnInit{
   posts: Post[] = [];
-  columnsToDisplay: String[] = ['id', 'title', 'body']
+  columnsToDisplay: String[] = ['id', 'title', 'body'];
+  isLoading = false;
 
   constructor(private postService: PostService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.getPosts();
   }
 
@@ -21,6 +23,7 @@ export class PostsTableComponent implements OnInit{
     this.postService.getPosts()
       .subscribe(posts => {
         this.posts = posts;
+        this.isLoading = false;
       })
   }
 }
