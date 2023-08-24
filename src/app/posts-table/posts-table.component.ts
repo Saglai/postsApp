@@ -9,6 +9,7 @@ import { Post } from '../post';
 })
 export class PostsTableComponent implements OnInit{
   posts: Post[] = [];
+  columnsToDisplay: String[] = ['id', 'title', 'body']
 
   constructor(private postService: PostService) {}
 

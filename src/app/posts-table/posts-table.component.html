@@ -1,23 +1,23 @@
 <h2>Posts Table</h2>
 
-<table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Details</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let post of posts">
-            <td class="title">{{post.title}}</td>
-            <td class="body">{{post.body}}</td>
+<table mat-table [dataSource]="posts" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let post"> {{ post.id }}</td>
+    </ng-container>
 
-            <td>
-                <a routerLink="/posts/{{post.id}}">
-                    <button type="button">View</button>
-                </a>
-            </td>
-        </tr>
-    </tbody>
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let post"> {{ post.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="body">
+        <th mat-header-cell *matHeaderCellDef> Content </th>
+        <td mat-cell *matCellDef="let post"> {{ post.body }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row
+        routerLink="/posts/{{row.id}}"
+        *matRowDef="let row; columns: columnsToDisplay"></tr>
 </table>
