@@ -7,39 +7,16 @@
     align-items: center;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .container-heading {
     font-size: 18pt;
     margin-bottom: 15px
-}
-
-label, input {
-    display: block;
-  }
-
-label {
-    color: gray;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 12pt;
-}
-
-input {
-    font-size: 16pt;
-    margin-bottom: 15px;
-    padding: 10px;
-    width: 280px;
-}
-
-.submit-button {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    height: 40px;
-    width: 250px;
-    background-color: darkblue;
-    border: solid 1px darkblue;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: bold;
 }
 
 a {
