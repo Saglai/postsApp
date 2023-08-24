@@ -1,43 +1,44 @@
-<div class="sign-in-container">
-    <h2 class="container-heading">Log in</h2>
-    <div class="forms-container">
-        <form [formGroup]="signInForm" (submit)="submitSignIn()">
-            <mat-form-field>
-                <mat-label>Your login</mat-label>
-                <input matInput type="text" formControlName="login" required>
+<div class="sign-in-container mx-auto">
+    <mat-card class="d-flex flex-column justify-content-center align-items-center">
+        <h2 class="mt-3">Log in</h2>
+            <form class="d-flex flex-column justify-content-center align-items-center" [formGroup]="signInForm" (submit)="submitSignIn()">
+                <mat-form-field class="mat-form-field-width">
+                    <mat-label>Your login</mat-label>
+                    <input matInput type="text" formControlName="login" required>
 
-                <mat-error *ngIf="login?.errors?.['required']">
-                    Login is required.
-                </mat-error>
+                    <mat-error *ngIf="login?.errors?.['required']">
+                        Login is required
+                    </mat-error>
 
-                <mat-error *ngIf="login?.errors?.['minlength']">
-                    Login must be at least 2 characters long.
-                </mat-error>
+                    <mat-error *ngIf="login?.errors?.['minlength']">
+                        Requires at least 5 characters
+                    </mat-error>
 
-                <mat-error *ngIf="login?.errors?.['maxlength']">
-                    Login must not be longer than 15 characters
-                </mat-error>
-            </mat-form-field>
+                    <mat-error *ngIf="login?.errors?.['maxlength']">
+                        Requires no more than 15 characters
+                    </mat-error>
+                </mat-form-field>
 
-            <mat-form-field>
-                <input matInput type="password" placeholder="Password" formControlName="password" required>    
-                
-                <mat-error *ngIf="password?.errors?.['required']">
-                    Password is required.
-                </mat-error>
+                <mat-form-field class="mt-1 mat-form-field-width">
+                    <input matInput type="password" placeholder="Password" formControlName="password" required>
 
-                <mat-error *ngIf="password?.errors?.['minlength']">
-                    Password must be at least 5 characters long.
-                </mat-error>
+                    <mat-error *ngIf="password?.errors?.['required']">
+                        Password is required
+                    </mat-error>
 
-                <mat-error *ngIf="password?.errors?.['maxlength']">
-                    Password must not be longer than 15 characters.
-                </mat-error>
-            </mat-form-field>
+                    <mat-error *ngIf="password?.errors?.['minlength']">
+                        Requires at least 5 characters
+                    </mat-error>
 
-            <button [disabled]="!signInForm.valid" mat-raised-button color="primary" mat-button>Sign In</button>
-        </form>
-    </div>
+                    <mat-error *ngIf="password?.errors?.['maxlength']">
+                        Requires no more than 15 characters
+                    </mat-error>
+                </mat-form-field>
 
-    <p>New to PostsApp? <a routerLink="/">Join now</a></p>
+                <button class="mt-2" [disabled]="!signInForm.valid" mat-raised-button color="primary" mat-button>Log In</button>
+            </form>
+
+        <p class="mt-3 mb-4">New to PostsApp? <a routerLink="/sign-up">Join now</a></p>
+    </mat-card>
+
 </div>
