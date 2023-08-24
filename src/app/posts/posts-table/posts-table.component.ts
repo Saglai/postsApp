@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
-import { Post } from '../post';
+import { PostModel } from '../post.model';
 
 @Component({
   selector: 'app-posts-table',
@@ -8,7 +8,7 @@ import { Post } from '../post';
   styleUrls: ['./posts-table.component.css']
 })
 export class PostsTableComponent implements OnInit{
-  posts: Post[] = [];
+  posts: PostModel[] = [];
   columnsToDisplay: String[] = ['id', 'title', 'body'];
   isLoading = false;
 

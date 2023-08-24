@@ -3,7 +3,7 @@ import { HttpClient} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError} from 'rxjs/operators';
 
-import { Post } from './post';
+import { PostModel } from './post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +13,18 @@ export class PostService {
 
   constructor(private http: HttpClient) {}
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.postsUrl)
+  getPosts(): Observable<PostModel[]> {
+    return this.http.get<PostModel[]>(this.postsUrl)
       .pipe(
-        catchError(this.handleError<Post[]>('getPosts', []))
+        catchError(this.handleError<PostModel[]>('getPosts', []))
       )
   }
 
-  getPost(id: number): Observable<Post> {
+  getPost(id: number): Observable<PostModel> {
     const url =  `${this.postsUrl}/${id}`;
-    return this.http.get<Post>(url)
+    return this.http.get<PostModel>(url)
     .pipe(
-      catchError(this.handleError<Post>(`getPost id ${id}`))
+      catchError(this.handleError<PostModel>(`getPost id ${id}`))
     );
   }
 

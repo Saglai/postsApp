@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { Post } from '../post';
+import { PostModel } from '../post.model';
 
 @Component({
   selector: 'app-post-detail',
@@ -10,7 +10,7 @@ import { Post } from '../post';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit {
-  post: Post | undefined;
+  post: PostModel | undefined;
   isLoading = false;
 
   constructor(

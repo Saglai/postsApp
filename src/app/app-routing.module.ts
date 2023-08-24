@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PostsTableComponent } from './posts-table/posts-table.component';
-import { PostDetailComponent } from './post-detail/post-detail.component';
+import { PostsTableComponent } from './posts/posts-table/posts-table.component';
+import { PostDetailComponent } from './posts/post-detail/post-detail.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { authGuard } from './auth/auth.guard';
