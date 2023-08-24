@@ -7,8 +7,7 @@ import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'app-post-detail',
-  templateUrl: './post-detail.component.html',
-  styleUrls: ['./post-detail.component.css']
+  templateUrl: './post-detail.component.html'
 })
 export class PostDetailComponent implements OnInit {
   post: PostModel | undefined;
