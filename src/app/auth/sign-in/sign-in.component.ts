@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { SignInModel } from '../auth.model';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -28,7 +28,7 @@ export class SignInComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private _snackBar: MatSnackBar) {}
+    private notificationService: NotificationService) {}
 
   submitSignIn() {
     const signInValues: SignInModel = this.signInForm.value as SignInModel;
@@ -40,14 +40,8 @@ export class SignInComponent {
     }
 
     if (operationResult.failMessage) {
-      this.openSnackBar(operationResult.failMessage)
+      this.notificationService.notify(operationResult.failMessage);
     }
-  }
-
-  openSnackBar(message: string) {
-    this._snackBar.open(message, 'ok', {
-      duration: 5000
-    });
   }
 
   get login() { return this.signInForm.get('login'); }

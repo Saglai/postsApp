@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { PostModel } from '../post.model';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'app-posts-table',
@@ -12,7 +13,8 @@ export class PostsTableComponent implements OnInit{
   columnsToDisplay: String[] = ['id', 'title', 'body'];
   isLoading = false;
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService,
+    private notificationService: NotificationService) {}
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -21,9 +23,10 @@ export class PostsTableComponent implements OnInit{
 
   getPosts(): void {
     this.postService.getPosts()
-      .subscribe(posts => {
-        this.posts = posts;
-        this.isLoading = false;
+      .subscribe({
+        next: posts => this.posts = posts,
+        error: error => this.notificationService.notify(error.message)
       })
+      .add(() => this.isLoading = false);
   }
 }

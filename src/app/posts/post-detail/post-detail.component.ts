@@ -3,6 +3,7 @@ import { PostService } from '../post.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { PostModel } from '../post.model';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -16,7 +17,8 @@ export class PostDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private postService: PostService,
-    private location: Location
+    private location: Location,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -27,10 +29,11 @@ export class PostDetailComponent implements OnInit {
   getPost(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.postService.getPost(id)
-      .subscribe(post => {
-        this.post = post;
-        this.isLoading = false;
+      .subscribe({
+        next: post => this.post = post,
+        error: error => this.notificationService.notify(error.message)
       })
+      .add(() => this.isLoading = false);
   }
 
   goBack(): void {
