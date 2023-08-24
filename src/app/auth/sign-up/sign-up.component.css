@@ -1,0 +1,23 @@
+.sign-up-container {
+    width: 380px;
+    margin-top: 5%;
+}
+
+h2 {
+    font-size: 18pt;
+    margin-bottom: 15px;
+}
+
+form {
+    min-width: 400px;
+    max-width: 450px;
+    width: 100%;
+}
+
+.mat-form-field-width {
+    width: 73%;
+}
+
+a {
+    text-decoration: none;
+}

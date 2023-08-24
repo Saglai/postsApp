@@ -1,0 +1,24 @@
+<header>
+    <mat-toolbar color="primary" class="d-flex justify-content-between">
+    <div class="app-name">
+        <h1>postsApp</h1>
+    </div>
+
+    <div class="buttons-container">
+        <div *ngIf="isSignedOut">
+            <a routerLink="/sign-up">
+                <button mat-flat-button color="primary" type="button">SIGN UP</button>
+            </a>
+            <a routerLink="/sign-in">
+                <button mat-flat-button color="primary" type="button">LOG IN</button>
+            </a>
+        </div>
+
+        <div *ngIf="!isSignedOut">
+            <a routerLink="/sign-in">
+                <button mat-flat-button color="primary" type="button" (click)="logOut()">LOG OUT</button>
+            </a>
+        </div>
+    </div>
+    </mat-toolbar>
+</header>

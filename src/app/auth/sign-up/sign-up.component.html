@@ -1,0 +1,42 @@
+<div class="sign-up-container mx-auto">
+    <mat-card class="d-flex flex-column justify-content-center align-items-center">
+        <h2 class="mt-3">Sign up</h2>
+        <form class="d-flex flex-column justify-content-center align-items-center" [formGroup]="signUpForm" (submit)="submitSignUp()">
+            <mat-form-field class="mat-form-field-width">
+                <mat-label>Your login</mat-label>
+                <input matInput type="text" formControlName="login" required>
+
+                <mat-error *ngIf="login?.errors?.['required']">
+                    Login is required
+                </mat-error>
+
+                <mat-error *ngIf="login?.errors?.['minlength']">
+                    Requires at least 5 characters
+                </mat-error>
+
+                <mat-error *ngIf="login?.errors?.['maxlength']">
+                    Requires no more than 15 characters
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="mt-1 mat-form-field-width">
+                <input matInput type="password" placeholder="Password" formControlName="password" required>
+
+                <mat-error *ngIf="password?.errors?.['required']">
+                    Password is required
+                </mat-error>
+
+                <mat-error *ngIf="password?.errors?.['minlength']">
+                    Requires at least 5 characters
+                </mat-error>
+
+                <mat-error *ngIf="password?.errors?.['maxlength']">
+                    Requires no more than 15 characters
+                </mat-error>
+            </mat-form-field>
+
+            <button class="mt-2" [disabled]="!signUpForm.valid" mat-raised-button color="primary" mat-button>Sign up</button>
+        </form>
+        <p class="mt-3 mb-4">Already a member? <a routerLink="/sign-in">Log in</a></p>
+    </mat-card>
+</div>

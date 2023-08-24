@@ -1,0 +1,15 @@
+<div *ngIf="isLoading" class="mt-2">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="post" class="mt-2">
+    <div class="title">
+        <h2>Title</h2>
+        <p>{{post.title}}</p>
+    </div>
+    <div class="body">
+        <h2>Content</h2>
+        <p>{{post.body}}</p>
+    </div>
+    <button mat-flat-button color="primary" type="button" (click)="goBack()">Back</button>
+</div>
